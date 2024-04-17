@@ -1,17 +1,15 @@
-import './App.css';
 import React from 'react';
-import { CometChat } from "@cometchat-pro/chat";
-import Routes from '../src/routes';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './Components/Login';
 
-const appID = "255583813f842d09";
-CometChat.init(appID);
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Routes></Routes>
-    </div>
+    <BrowserRouter>
+      <Routes>
+          <Route index element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

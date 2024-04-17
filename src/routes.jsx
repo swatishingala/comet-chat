@@ -1,23 +1,22 @@
 import { useEffect , useState} from "react";
-import {Route, Navigate} from "react-router-dom";
-import Home from './Components/Home'
+import {Route, Redirect} from "react-router-dom";
+import Home from './Components/Login'
 
 
 const Routes = ({component : Component, isAuthenticated, ...rest}) => {
     
 return (
-    <Routes>
+
     <Route
     {...rest}
     render={(props) =>
       isAuthenticated ? (
         <Component {...props} />
       ) : (
-        <Navigate to="/login" />
+        <Redirect to={{ pathname: '/home', state: { from: props.location } }} />
       )
     }
   />
-  </Routes>
 )
 }
 

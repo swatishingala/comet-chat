@@ -1,22 +1,20 @@
-import { useEffect , useState} from "react";
-import {Route, Redirect} from "react-router-dom";
-import Home from './Components/Login'
+import React from "react";
+import {Router, Switch, Route} from "react-router-dom";
+import Login from "./Components/Login";
+import Register from "./Components/Register/Register";
 
 
 const Routes = ({component : Component, isAuthenticated, ...rest}) => {
     
 return (
 
-    <Route
-    {...rest}
-    render={(props) =>
-      isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to={{ pathname: '/home', state: { from: props.location } }} />
-      )
-    }
-  />
+  <Router>
+  <Switch>
+    <Route path="/login" component={Login} />
+    <Route path="/register" component={Register} />
+    {/* Other routes */}
+  </Switch>
+</Router>
 )
 }
 
